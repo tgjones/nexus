@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E5E31FF-D903-40BD-A787-7DA4E1D30138}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nexus</RootNamespace>
+    <AssemblyName>Nexus</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Color.cs" />
+    <Compile Include="Design\ColorConverter.cs" />
+    <Compile Include="ColorF.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="ColorsF.cs" />
+    <Compile Include="Design\FieldPropertyDescriptor.cs" />
+    <Compile Include="Design\MemberPropertyDescriptor.cs" />
+    <Compile Include="HsbColor.cs" />
+    <Compile Include="HslColor.cs" />
+    <Compile Include="Int32Collection.cs" />
+    <Compile Include="Design\Int32CollectionConverter.cs" />
+    <Compile Include="Line3D.cs" />
+    <Compile Include="MathUtility.cs" />
+    <Compile Include="Matrix2D.cs" />
+    <Compile Include="Matrix3D.cs" />
+    <Compile Include="Normal3D.cs" />
+    <Compile Include="Plane.cs" />
+    <Compile Include="Point2D.cs" />
+    <Compile Include="Point2DCollection.cs" />
+    <Compile Include="Point3D.cs" />
+    <Compile Include="Point3DCollection.cs" />
+    <Compile Include="Design\Point3DCollectionConverter.cs" />
+    <Compile Include="Design\Point3DConverter.cs" />
+    <Compile Include="Point4D.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quadratic.cs" />
+    <Compile Include="Quaternion.cs" />
+    <Compile Include="Ray3D.cs" />
+    <Compile Include="RayDifferential3D.cs" />
+    <Compile Include="Spectrum.cs" />
+    <Compile Include="Sphere.cs" />
+    <Compile Include="TokenizerHelper.cs" />
+    <Compile Include="Triangle3D.cs" />
+    <Compile Include="Vector2D.cs" />
+    <Compile Include="Vector3D.cs" />
+    <Compile Include="Vector3DCollection.cs" />
+    <Compile Include="Design\Vector3DCollectionConverter.cs" />
+    <Compile Include="Design\Vector3DConverter.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
