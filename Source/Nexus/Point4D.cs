@@ -125,14 +125,29 @@ namespace Nexus
 			return vector;
 		}
 
-		public static Point4D operator -(Point4D point1, Point4D point2)
+		public static Point4D operator +(Point4D point, Vector4D vector)
 		{
-			return new Point4D(point1.X - point2.X, point1.Y - point2.Y, point1.Z - point2.Z, point1.W - point2.W);
+			return new Point4D(point.X + vector.X, point.Y + vector.Y, point.Z + vector.Z, point.W + vector.W);
+		}
+
+		public static Vector4D operator -(Point4D point1, Point4D point2)
+		{
+			return new Vector4D(point1.X - point2.X, point1.Y - point2.Y, point1.Z - point2.Z, point1.W - point2.W);
 		}
 
 		public static Point4D operator *(Point4D point, Matrix3D matrix)
 		{
 			return matrix.Transform(point);
+		}
+
+		public static Point4D operator *(Point4D value, float scaleFactor)
+		{
+			Point4D result;
+			result.X = value.X * scaleFactor;
+			result.Y = value.Y * scaleFactor;
+			result.Z = value.Z * scaleFactor;
+			result.W = value.W * scaleFactor;
+			return result;
 		}
 
 		public static bool operator ==(Point4D value1, Point4D value2)

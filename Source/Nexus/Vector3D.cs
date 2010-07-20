@@ -10,11 +10,6 @@ namespace Nexus
 	[StructLayout(LayoutKind.Sequential)]
 	public struct Vector3D
 	{
-		private static readonly Vector3D _forward = new Vector3D(0f, 0f, -1f);
-		private static readonly Vector3D _up = new Vector3D(0f, 1f, 0f);
-		private static readonly Vector3D _down = new Vector3D(0f, -1f, 0f);
-		private static readonly Vector3D _left = new Vector3D(-1f, 0, 0f);
-
 		public float X, Y, Z;
 
 		#region Constructors
@@ -74,7 +69,7 @@ namespace Nexus
 		/// </summary>
 		public static Vector3D Forward
 		{
-			get { return _forward; }
+			get { return new Vector3D(0f, 0f, -1f); }
 		}
 
 		/// <summary>
@@ -82,7 +77,7 @@ namespace Nexus
 		/// </summary>
 		public static Vector3D Up
 		{
-			get { return _up; }
+			get { return new Vector3D(0f, 1f, 0f); }
 		}
 
 		/// <summary>
@@ -90,7 +85,7 @@ namespace Nexus
 		/// </summary>
 		public static Vector3D Down
 		{
-			get { return _down; }
+			get { return new Vector3D(0f, -1f, 0f); }
 		}
 
 		/// <summary>
@@ -98,7 +93,7 @@ namespace Nexus
 		/// </summary>
 		public static Vector3D Left
 		{
-			get { return _left; }
+			get { return new Vector3D(-1f, 0, 0f); }
 		}
 
 		public static Vector3D Zero
@@ -106,7 +101,7 @@ namespace Nexus
 			get { return new Vector3D(0, 0, 0); }
 		}
 
-		public static int SizeInBytes
+		public static short SizeInBytes
 		{
 			get { return sizeof(float) * 3; }
 		}

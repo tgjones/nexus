@@ -55,6 +55,9 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Nexus\AxisAlignedBoundingBox.cs">
+      <Link>AxisAlignedBoundingBox.cs</Link>
+    </Compile>
     <Compile Include="..\Nexus\Color.cs">
       <Link>Color.cs</Link>
     </Compile>
@@ -159,6 +162,9 @@
     </Compile>
     <Compile Include="..\Nexus\Vector3DCollection.cs">
       <Link>Vector3DCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Vector4D.cs">
+      <Link>Vector4D.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,20 +1,34 @@
 using System;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Nexus.Design;
 
 namespace Nexus
 {
 	[TypeConverter(typeof(ColorConverter))]
+	[StructLayout(LayoutKind.Sequential)]
 	public struct Color
 	{
+		#region Fields
+
+		public byte A;
+		public byte R;
+		public byte G;
+		public byte B;
+
+		#endregion
+
+		#region Constructors
+
 		public Color(byte r, byte g, byte b)
-			: this(255, r, g, b)
 		{
-			
+			A = 255;
+			R = r;
+			G = g;
+			B = b;
 		}
 
 		public Color(byte a, byte r, byte g, byte b)
-			: this()
 		{
 			A = a;
 			R = r;
@@ -22,10 +36,7 @@ namespace Nexus
 			B = b;
 		}
 
-		public byte A { get; set; }
-		public byte R { get; set; }
-		public byte G { get; set; }
-		public byte B { get; set; }
+		#endregion
 
 		public Color Clone()
 		{
@@ -69,9 +80,13 @@ namespace Nexus
 				MathUtility.Lerp(rgb1.B, rgb2.B, t));
 		}
 
+		#region Operators
+
 		public static explicit operator ColorF(Color color)
 		{
 			return new ColorF(color.A / 255.0f, color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 		}
+
+		#endregion
 	}
 }

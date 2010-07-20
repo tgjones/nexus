@@ -1,32 +1,44 @@
+using System.Runtime.InteropServices;
+
 namespace Nexus
 {
+	[StructLayout(LayoutKind.Sequential)]
 	public struct ColorF
 	{
+		#region Fields
+
+		public float A;
+		public float B;
+		public float G;
+		public float R;
+
+		#endregion
+
+		#region Constructor
+
 		public ColorF(float value)
-			: this(value, value, value)
 		{
+			A = 1.0f;
+			R = value;
+			G = value;
+			B = value;
 		}
 
 		public ColorF(float r, float g, float b)
-			: this(1.0f, r, g, b)
 		{
+			A = 1.0f;
+			R = r;
+			G = g;
+			B = b;
 		}
 
 		public ColorF(float a, float r, float g, float b)
-			: this()
 		{
 			A = a;
 			R = r;
 			G = g;
 			B = b;
 		}
-
-		#region Properties
-
-		public float A;
-		public float B;
-		public float G;
-		public float R;
 
 		#endregion
 

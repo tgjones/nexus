@@ -166,7 +166,9 @@ namespace Nexus
 
 		public static float Saturate(float value)
 		{
-			return Clamp(value, 0.0f, 1.0f);
+			value = (value > 1.0f) ? 1.0f : value;
+			value = (value < 0.0f) ? 0.0f : value;
+			return value;
 		}
 
 		public static float Exp(float value)
