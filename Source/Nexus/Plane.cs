@@ -8,7 +8,7 @@ namespace Nexus
 		/// <summary>
 		/// The normal vector of the plane. Points x on the plane satisfy Dot(n,x) = d
 		/// </summary>
-		public Vector3D Normal;
+		public Normal3D Normal;
 
 		/// <summary>
 		/// The distance of the plane along its normal from the origin.
@@ -23,7 +23,7 @@ namespace Nexus
 		/// </summary>
 		/// <param name="normal">The normal vector of the plane.</param>
 		/// <param name="d">The distance of the plane along its normal from the origin.</param>
-		public Plane(Vector3D normal, float d)
+		public Plane(Normal3D normal, float d)
 		{
 			Normal = normal;
 			D = d;
@@ -37,7 +37,7 @@ namespace Nexus
 		/// <param name="c"></param>
 		public Plane(Point3D a, Point3D b, Point3D c)
 		{
-			Normal = Vector3D.Normalize(Vector3D.Cross(b - a, c - a));
+			Normal = (Normal3D) Vector3D.Normalize(Vector3D.Cross(b - a, c - a));
 			D = Vector3D.Dot(Normal, (Vector3D) a);
 		}
 

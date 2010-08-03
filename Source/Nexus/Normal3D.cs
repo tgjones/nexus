@@ -71,6 +71,13 @@ namespace Nexus
 			return v / v.Length();
 		}
 
+		public static Normal3D Cross(Normal3D v1, Normal3D v2)
+		{
+			return new Normal3D((v1.Y * v2.Z) - (v1.Z * v2.Y),
+				(v1.Z * v2.X) - (v1.X * v2.Z),
+				(v1.X * v2.Y) - (v1.Y * v2.X));
+		}
+
 		#endregion
 
 		#region Operators
@@ -120,6 +127,11 @@ namespace Nexus
 		public static explicit operator Normal3D(Vector3D vector)
 		{
 			return new Normal3D(vector.X, vector.Y, vector.Z);
+		}
+
+		public static explicit operator Vector3D(Normal3D normal)
+		{
+			return new Vector3D(normal.X, normal.Y, normal.Z);
 		}
 
 		#endregion

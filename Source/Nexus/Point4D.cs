@@ -16,6 +16,15 @@ namespace Nexus
 
 		#endregion
 
+		#region Properties
+
+		public static short SizeInBytes
+		{
+			get { return sizeof(float) * 4; }
+		}
+
+		#endregion
+
 		#region Constructors
 
 		public Point4D(Point3D point, float w)

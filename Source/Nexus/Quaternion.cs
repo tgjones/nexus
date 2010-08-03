@@ -117,6 +117,16 @@ namespace Nexus
 			return quaternion;
 		}
 
+		public static bool operator ==(Quaternion left, Quaternion right)
+		{
+			return left.X == right.X && left.Y == right.Y && left.Z == right.Z && left.W == right.W;
+		}
+
+		public static bool operator !=(Quaternion left, Quaternion right)
+		{
+			return !(left == right);
+		}
+
 		#endregion
 
 		#region Static stuff

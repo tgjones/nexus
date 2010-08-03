@@ -65,6 +65,14 @@ namespace Nexus
 		#region Static properties
 
 		/// <summary>
+		/// Returns a unit Vector3D designating backward in a right-handed coordinate system(0, 0, 1).
+		/// </summary>
+		public static Vector3D Backward
+		{
+			get { return new Vector3D(0f, 0f, 1f); }
+		}
+
+		/// <summary>
 		/// Returns a unit Vector3D designating forward in a right-handed coordinate system(0, 0, −1).
 		/// </summary>
 		public static Vector3D Forward
@@ -106,6 +114,11 @@ namespace Nexus
 			get { return sizeof(float) * 3; }
 		}
 
+		public static Vector3D One
+		{
+			get { return new Vector3D(1, 1, 1); }
+		}
+
 		#endregion
 
 		#region Instance methods
@@ -132,6 +145,11 @@ namespace Nexus
 		public float LengthSquared()
 		{
 			return (X * X) + (Y * Y) + (Z * Z);
+		}
+
+		public ColorF ToColorF()
+		{
+			return new ColorF(X, Y, Z);
 		}
 
 		public override string ToString()
@@ -270,6 +288,11 @@ namespace Nexus
 			return vector;
 		}
 
+		public static Vector3D Abs(Vector3D vector)
+		{
+			return new Vector3D(Math.Abs(vector.X), Math.Abs(vector.Y), Math.Abs(vector.Z));
+		}
+
 		#endregion
 
 		#region Operators
@@ -328,6 +351,16 @@ namespace Nexus
 		public static explicit operator Point3D(Vector3D vector)
 		{
 			return new Point3D(vector.X, vector.Y, vector.Z);
+		}
+
+		public static bool operator ==(Vector3D left, Vector3D right)
+		{
+			return left.X == right.X && left.Y == right.Y && left.Z == right.Z;
+		}
+
+		public static bool operator !=(Vector3D left, Vector3D right)
+		{
+			return !(left == right);
 		}
 
 		#endregion

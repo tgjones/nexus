@@ -12,7 +12,7 @@ namespace Nexus
 	/// </remarks>
 	/// <seealso cref="http://wiki.oriontransfer.org/blog:2009:05:09:the_matrix"/>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct Matrix3D
+	public struct Matrix3D : IEquatable<Matrix3D>
 	{
 		private readonly static Matrix3D _identity;
 
@@ -155,6 +155,24 @@ namespace Nexus
 				return (det < 0.999f || det > 1.001f);
 #endif
 				return false;
+			}
+		}
+
+		public Vector3D Translation
+		{
+			get
+			{
+				Vector3D vector;
+				vector.X = M41;
+				vector.Y = M42;
+				vector.Z = M43;
+				return vector;
+			}
+			set
+			{
+				M41 = value.X;
+				M42 = value.Y;
+				M43 = value.Z;
 			}
 		}
 
@@ -307,6 +325,24 @@ namespace Nexus
 		#endregion
 
 		#region Methods
+
+		public bool Equals(Matrix3D other)
+		{
+			return ((((((this.M11 == other.M11) && (this.M22 == other.M22)) && ((this.M33 == other.M33) && (this.M44 == other.M44))) && (((this.M12 == other.M12) && (this.M13 == other.M13)) && ((this.M14 == other.M14) && (this.M21 == other.M21)))) && ((((this.M23 == other.M23) && (this.M24 == other.M24)) && ((this.M31 == other.M31) && (this.M32 == other.M32))) && (((this.M34 == other.M34) && (this.M41 == other.M41)) && (this.M42 == other.M42)))) && (this.M43 == other.M43));
+		}
+
+		public override bool Equals(object obj)
+		{
+			bool flag = false;
+			if (obj is Matrix3D)
+				flag = Equals((Matrix3D) obj);
+			return flag;
+		}
+
+		public override int GetHashCode()
+		{
+			return (((((((((((((((this.M11.GetHashCode() + this.M12.GetHashCode()) + this.M13.GetHashCode()) + this.M14.GetHashCode()) + this.M21.GetHashCode()) + this.M22.GetHashCode()) + this.M23.GetHashCode()) + this.M24.GetHashCode()) + this.M31.GetHashCode()) + this.M32.GetHashCode()) + this.M33.GetHashCode()) + this.M34.GetHashCode()) + this.M41.GetHashCode()) + this.M42.GetHashCode()) + this.M43.GetHashCode()) + this.M44.GetHashCode());
+		}
 
 		public void Invert()
 		{
@@ -938,6 +974,16 @@ namespace Nexus
 				(((matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22)) + (matrix1.M43 * matrix2.M32)) + (matrix1.M44 * matrix2.M42),
 				(((matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23)) + (matrix1.M43 * matrix2.M33)) + (matrix1.M44 * matrix2.M43),
 				(((matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24)) + (matrix1.M43 * matrix2.M34)) + (matrix1.M44 * matrix2.M44));
+		}
+
+		public static bool operator ==(Matrix3D matrix1, Matrix3D matrix2)
+		{
+			return matrix1.Equals(matrix2);
+		}
+
+		public static bool operator !=(Matrix3D matrix1, Matrix3D matrix2)
+		{
+			return !matrix1.Equals(matrix2);
 		}
 
 		#endregion

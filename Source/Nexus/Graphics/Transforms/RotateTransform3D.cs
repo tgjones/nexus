@@ -1,11 +1,17 @@
 namespace Nexus.Graphics.Transforms
 {
-	public class RotateTransform : AffineTransform
+	public class RotateTransform3D : AffineTransform
 	{
-		public Rotation Rotation
+		public Rotation Rotation { get; set; }
+
+		public RotateTransform3D(Rotation rotation)
 		{
-			get;
-			set;
+			Rotation = rotation;
+		}
+
+		public RotateTransform3D()
+		{
+
 		}
 
 		public override Matrix3D Value

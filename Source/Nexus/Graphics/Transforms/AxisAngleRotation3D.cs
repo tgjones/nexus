@@ -1,6 +1,6 @@
 namespace Nexus.Graphics.Transforms
 {
-	public class AxisAngleRotation : Rotation
+	public class AxisAngleRotation3D : Rotation
 	{
 		public float Angle
 		{
@@ -14,7 +14,7 @@ namespace Nexus.Graphics.Transforms
 			set;
 		}
 
-		public AxisAngleRotation()
+		public AxisAngleRotation3D()
 		{
 			Axis = new Vector3D(0, 1, 0);
 		}

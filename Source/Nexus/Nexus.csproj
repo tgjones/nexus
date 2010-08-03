@@ -74,19 +74,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AxisAlignedBoundingBox.cs" />
+    <Compile Include="BoundingFrustum.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Graphics\Cameras\Camera.cs" />
     <Compile Include="Graphics\Cameras\OrthographicCamera.cs" />
     <Compile Include="Graphics\Cameras\PerspectiveCamera.cs" />
     <Compile Include="Graphics\Cameras\ProjectionCamera.cs" />
     <Compile Include="Graphics\Transforms\AffineTransform.cs" />
-    <Compile Include="Graphics\Transforms\AxisAngleRotation.cs" />
+    <Compile Include="Graphics\Transforms\AxisAngleRotation3D.cs" />
     <Compile Include="Graphics\Transforms\MatrixTransform.cs" />
     <Compile Include="Graphics\Transforms\QuaternionRotation.cs" />
-    <Compile Include="Graphics\Transforms\RotateTransform.cs" />
+    <Compile Include="Graphics\Transforms\RotateTransform3D.cs" />
     <Compile Include="Graphics\Transforms\Rotation.cs" />
-    <Compile Include="Graphics\Transforms\ScaleTransform.cs" />
+    <Compile Include="Graphics\Transforms\ScaleTransform3D.cs" />
     <Compile Include="Graphics\Transforms\Transform3D.cs" />
+    <Compile Include="Graphics\Transforms\Transform3DCollection.cs" />
+    <Compile Include="Graphics\Transforms\Transform3DGroup.cs" />
     <Compile Include="Graphics\Transforms\TranslateTransform.cs" />
     <Compile Include="Vector4D.cs" />
     <Compile Include="Design\ColorConverter.cs" />

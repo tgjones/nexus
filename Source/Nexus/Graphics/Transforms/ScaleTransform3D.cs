@@ -1,6 +1,6 @@
 namespace Nexus.Graphics.Transforms
 {
-	public class ScaleTransform : AffineTransform
+	public class ScaleTransform3D : AffineTransform
 	{
 		public float ScaleX
 		{
@@ -25,7 +25,7 @@ namespace Nexus.Graphics.Transforms
 			get { return Matrix3D.CreateScale(this.ScaleX, this.ScaleY, this.ScaleZ); }
 		}
 
-		public ScaleTransform()
+		public ScaleTransform3D()
 		{
 			ScaleX = ScaleY = ScaleZ = 1;
 		}

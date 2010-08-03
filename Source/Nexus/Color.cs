@@ -80,6 +80,11 @@ namespace Nexus
 				MathUtility.Lerp(rgb1.B, rgb2.B, t));
 		}
 
+		public Vector3D ToVector3D()
+		{
+			return new Vector3D(R / 255.0f, G / 255.0f, B / 255.0f);
+		}
+
 		#region Operators
 
 		public static explicit operator ColorF(Color color)

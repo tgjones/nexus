@@ -9,6 +9,16 @@ namespace Nexus
 		public Point3D Min;
 		public Point3D Max;
 
+		public Vector3D Size
+		{
+			get { return Vector3D.Abs(Max - Min); }
+		}
+
+		public Point3D Center
+		{
+			get { return Min + ((Max - Min) / 2); }
+		}
+
 		public AxisAlignedBoundingBox(Point3D p)
 		{
 			Min = Max = p;
