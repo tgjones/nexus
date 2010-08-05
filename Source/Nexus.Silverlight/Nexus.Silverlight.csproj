@@ -98,11 +98,20 @@
     <Compile Include="..\Nexus\ColorF.cs">
       <Link>ColorF.cs</Link>
     </Compile>
+    <Compile Include="..\Nexus\ColorRgb.cs">
+      <Link>ColorRgb.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\ColorRgbF.cs">
+      <Link>ColorRgbF.cs</Link>
+    </Compile>
     <Compile Include="..\Nexus\Colors.cs">
       <Link>Colors.cs</Link>
     </Compile>
     <Compile Include="..\Nexus\ColorsF.cs">
       <Link>ColorsF.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\ColorsRgbF.cs">
+      <Link>ColorsRgbF.cs</Link>
     </Compile>
     <Compile Include="..\Nexus\Design\ColorConverter.cs">
       <Link>Design\ColorConverter.cs</Link>

@@ -1,3 +1,5 @@
+using System;
+
 namespace Nexus
 {
 	public struct Quaternion
@@ -166,5 +168,10 @@ namespace Nexus
 		}
 
 		#endregion
+
+		public static bool IsNan(Quaternion q)
+		{
+			return float.IsNaN(q.X) || float.IsNaN(q.Y) || float.IsNaN(q.Z) || float.IsNaN(q.W);
+		}
 	}
 }

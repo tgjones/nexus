@@ -76,6 +76,9 @@
     <Compile Include="AxisAlignedBoundingBox.cs" />
     <Compile Include="BoundingFrustum.cs" />
     <Compile Include="Color.cs" />
+    <Compile Include="ColorRgb.cs" />
+    <Compile Include="ColorRgbF.cs" />
+    <Compile Include="ColorsRgbF.cs" />
     <Compile Include="Graphics\Cameras\Camera.cs" />
     <Compile Include="Graphics\Cameras\OrthographicCamera.cs" />
     <Compile Include="Graphics\Cameras\PerspectiveCamera.cs" />

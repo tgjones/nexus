@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Nexus
@@ -179,5 +180,10 @@ namespace Nexus
 		}
 
 		#endregion
+
+		public ColorRgbF ToColorRgbF()
+		{
+			return new ColorRgbF(R, G, B);
+		}
 	}
 }
