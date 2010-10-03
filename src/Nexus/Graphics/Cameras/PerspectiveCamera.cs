@@ -25,5 +25,22 @@ namespace Nexus.Graphics.Cameras
 			return Matrix3D.CreatePerspectiveFieldOfView(FieldOfView,
 				aspectRatio, NearPlaneDistance, FarPlaneDistance);
 		}
+
+		public static PerspectiveCamera CreateFromBounds(AxisAlignedBoundingBox bounds, float fieldOfView)
+		{
+			Vector3D max = bounds.Size;
+			float radius = System.Math.Max(max.X, System.Math.Max(max.Y, max.Z));
+
+			float dist = radius / MathUtility.Sin(fieldOfView / 2);
+			return new PerspectiveCamera
+			{
+				FieldOfView = fieldOfView,
+				NearPlaneDistance = 1.0f,
+				FarPlaneDistance = radius * 10,
+				Position = bounds.Center + Vector3D.Normalize(new Vector3D(-1, 0.2f, -0.6f)) * dist / 3,
+				LookDirection = Vector3D.Normalize(new Vector3D(1, -0.2f, 0.5f)),
+				UpDirection = Vector3D.Up
+			};
+		}
 	}
 }

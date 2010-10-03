@@ -1,8 +1,7 @@
-using Apollo.Core.Math;
 using NUnit.Framework;
 using SlimDX;
 
-namespace Apollo.Core.Tests
+namespace Nexus.Tests
 {
 	[TestFixture]
 	public class Matrix3DTests
@@ -77,92 +76,64 @@ namespace Apollo.Core.Tests
 		[Test]
 		public void CanCreateOrthographicMatrix()
 		{
-			const float WIDTH = 10;
-			const float HEIGHT = 10;
-			const float Z_NEAR_PLANE = 2;
-			const float Z_FAR_PLANE = 20;
-			Matrix3D projectionMatrix = Matrix3D.CreateOrthographic(WIDTH, HEIGHT, Z_NEAR_PLANE, Z_FAR_PLANE);
-			AssertMatrixValuesAreEqual(projectionMatrix,
-				2 / WIDTH, 0, 0, 0,
-				0, 2 / HEIGHT, 0, 0,
-				0, 0, 1 / (Z_NEAR_PLANE - Z_FAR_PLANE), 0,
-				0, 0, Z_NEAR_PLANE, 1);
+			const float width = 10;
+			const float height = 10;
+			const float zNearPlane = 2;
+			const float zFarPlane = 20;
+			Matrix3D projectionMatrix = Matrix3D.CreateOrthographic(width, height, zNearPlane, zFarPlane);
+			AssertMatricesAreEqual(Matrix.OrthoRH(width, height, zNearPlane, zFarPlane), projectionMatrix);
 		}
 
 		[Test]
 		public void CanCreateOrthographicOffCenterMatrix()
 		{
-			const float LEFT = -12;
-			const float RIGHT = 8;
-			const float BOTTOM = -3;
-			const float TOP = 7;
-			const float Z_NEAR_PLANE = 2;
-			const float Z_FAR_PLANE = 20;
-			Matrix3D projectionMatrix = Matrix3D.CreateOrthographicOffCenter(LEFT, RIGHT, BOTTOM, TOP, Z_NEAR_PLANE, Z_FAR_PLANE);
-			AssertMatrixValuesAreEqual(projectionMatrix,
-				2 / (RIGHT - LEFT), 0, 0, 0,
-				0, 2 / (TOP - BOTTOM), 0, 0,
-				0, 0, 1 / (Z_NEAR_PLANE - Z_FAR_PLANE), 0,
-				(LEFT + RIGHT) / (LEFT - RIGHT), (BOTTOM + TOP) / (BOTTOM - TOP), Z_NEAR_PLANE / (Z_NEAR_PLANE - Z_FAR_PLANE), 1);
+			const float left = -12;
+			const float right = 8;
+			const float bottom = -3;
+			const float top = 7;
+			const float zNearPlane = 2;
+			const float zFarPlane = 20;
+			Matrix3D projectionMatrix = Matrix3D.CreateOrthographicOffCenter(left, right, bottom, top, zNearPlane, zFarPlane);
+			AssertMatricesAreEqual(Matrix.OrthoOffCenterRH(left, right, bottom, top, zNearPlane, zFarPlane), projectionMatrix);
 		}
 
 		[Test]
 		public void CanCreateTranslationMatrixFromIndividualPoints()
 		{
-			const float X = 2;
-			const float Y = 3;
-			const float Z = 4;
-			Matrix3D translationMatrix = Matrix3D.CreateTranslation(X, Y, Z);
-			AssertMatrixValuesAreEqual(translationMatrix, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, X, Y, Z, 1);
+			const float x = 2;
+			const float y = 3;
+			const float z = 4;
+			Matrix3D translationMatrix = Matrix3D.CreateTranslation(x, y, z);
+			AssertMatricesAreEqual(Matrix.Translation(x, y, z), translationMatrix);
 		}
 
 		[Test]
 		public void CanCreateTranslationMatrixFromPoint3()
 		{
-			const float X = 2;
-			const float Y = 3;
-			const float Z = 4;
-			Point3D point = new Point3D(X, Y, Z);
+			const float x = 2;
+			const float y = 3;
+			const float z = 4;
+			Point3D point = new Point3D(x, y, z);
 			Matrix3D translationMatrix = Matrix3D.CreateTranslation(point);
-			AssertMatrixValuesAreEqual(translationMatrix, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, X, Y, Z, 1);
+			AssertMatricesAreEqual(Matrix.Translation(x, y, z), translationMatrix);
 		}
 
 		[Test]
 		public void CanCreateScaleMatrixWithIndividualScaleValues()
 		{
-			const float X = 2;
-			const float Y = 3;
-			const float Z = 4;
-			Matrix3D scaleMatrix = Matrix3D.CreateScale(X, Y, Z);
-			AssertMatrixValuesAreEqual(scaleMatrix, X, 0, 0, 0, 0, Y, 0, 0, 0, 0, Z, 0, 0, 0, 0, 1);
+			const float x = 2;
+			const float y = 3;
+			const float z = 4;
+			Matrix3D scaleMatrix = Matrix3D.CreateScale(x, y, z);
+			AssertMatricesAreEqual(Matrix.Scaling(x, y, z), scaleMatrix);
 		}
 
 		[Test]
 		public void CanCreateScaleMatrixWithSingleScaleValue()
 		{
-			const float SCALE = 2;
-			Matrix3D scaleMatrix = Matrix3D.CreateScale(SCALE);
-			AssertMatrixValuesAreEqual(scaleMatrix, SCALE, 0, 0, 0, 0, SCALE, 0, 0, 0, 0, SCALE, 0, 0, 0, 0, 1);
-		}
-
-		private static void AssertMatrixValuesAreEqual(Matrix3D actualResult, float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
-		{
-			Assert.AreEqual(m11, actualResult.M11);
-			Assert.AreEqual(m12, actualResult.M12);
-			Assert.AreEqual(m13, actualResult.M13);
-			Assert.AreEqual(m14, actualResult.M14);
-			Assert.AreEqual(m21, actualResult.M21);
-			Assert.AreEqual(m22, actualResult.M22);
-			Assert.AreEqual(m23, actualResult.M23);
-			Assert.AreEqual(m24, actualResult.M24);
-			Assert.AreEqual(m31, actualResult.M31);
-			Assert.AreEqual(m32, actualResult.M32);
-			Assert.AreEqual(m33, actualResult.M33);
-			Assert.AreEqual(m34, actualResult.M34);
-			Assert.AreEqual(m41, actualResult.M41);
-			Assert.AreEqual(m42, actualResult.M42);
-			Assert.AreEqual(m43, actualResult.M43);
-			Assert.AreEqual(m44, actualResult.M44);
+			const float scale = 2;
+			Matrix3D scaleMatrix = Matrix3D.CreateScale(scale);
+			AssertMatricesAreEqual(Matrix.Scaling(scale, scale, scale), scaleMatrix);
 		}
 	}
 }

@@ -104,6 +104,14 @@ namespace Nexus
 			get { return new Vector3D(-1f, 0, 0f); }
 		}
 
+		/// <summary>
+		/// Returns a unit vector designating right (1, 0, 0).
+		/// </summary>
+		public static Vector3D Right
+		{
+			get { return new Vector3D(1f, 0, 0f); }
+		}
+
 		public static Vector3D Zero
 		{
 			get { return new Vector3D(0, 0, 0); }

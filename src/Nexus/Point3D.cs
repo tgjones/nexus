@@ -33,6 +33,11 @@ namespace Nexus
 			get { return sizeof(float) * 3; }
 		}
 
+		public Point2D Xy
+		{
+			get { return new Point2D(X, Y); }
+		}
+
 		#endregion
 
 		#region Indexer

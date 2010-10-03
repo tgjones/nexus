@@ -41,6 +41,14 @@ namespace Nexus
 			B = b;
 		}
 
+		public ColorF(ColorRgbF rgb, float a)
+		{
+			A = a;
+			R = rgb.R;
+			G = rgb.G;
+			B = rgb.B;
+		}
+
 		#endregion
 
 		#region Methods
@@ -87,15 +95,6 @@ namespace Nexus
 				MathUtility.Saturate(value.B));
 		}
 
-		public Color ToRgbColor()
-		{
-			return new Color(
-				(byte) (MathUtility.Saturate(A) * 255.0f),
-				(byte) (MathUtility.Saturate(R) * 255.0f),
-				(byte) (MathUtility.Saturate(G) * 255.0f),
-				(byte) (MathUtility.Saturate(B) * 255.0f));
-		}
-
 		public override string ToString()
 		{
 			return string.Format("{0:F10}, {1:F10}, {2:F10}", R, G, B);
@@ -126,6 +125,7 @@ namespace Nexus
 		public static ColorF operator *(ColorF value, float multiplier)
 		{
 			return new ColorF(
+				value.A * multiplier,
 				value.R * multiplier,
 				value.G * multiplier,
 				value.B * multiplier);
@@ -158,6 +158,7 @@ namespace Nexus
 		public static ColorF operator +(ColorF left, ColorF right)
 		{
 			return new ColorF(
+				left.A + right.A,
 				left.R + right.R,
 				left.G + right.G,
 				left.B + right.B);
@@ -174,16 +175,31 @@ namespace Nexus
 		public static ColorF operator *(ColorF left, ColorF right)
 		{
 			return new ColorF(
+				left.A * right.A,
 				left.R * right.R,
 				left.G * right.G,
 				left.B * right.B);
 		}
 
+		public static explicit operator Color(ColorF value)
+		{
+			return new Color(
+				(byte)(MathUtility.Saturate(value.A) * 255.0f),
+				(byte)(MathUtility.Saturate(value.R) * 255.0f),
+				(byte)(MathUtility.Saturate(value.G) * 255.0f),
+				(byte)(MathUtility.Saturate(value.B) * 255.0f));
+		}
+
 		#endregion
 
-		public ColorRgbF ToColorRgbF()
+		public ColorRgbF Rgb
 		{
-			return new ColorRgbF(R, G, B);
+			get { return new ColorRgbF(R, G, B); }
+		}
+
+		public static ColorF Invert(ColorF value)
+		{
+			return new ColorF(1 - value.A, 1 - value.R, 1 - value.G, 1 - value.B);
 		}
 	}
 }

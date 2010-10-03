@@ -1,7 +1,6 @@
-using Apollo.Core.Math;
 using NUnit.Framework;
 
-namespace Apollo.Core.Tests
+namespace Nexus.Tests
 {
 	[TestFixture]
 	public class Point3DTests
