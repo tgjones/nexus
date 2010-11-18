@@ -89,6 +89,15 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Nexus.Wpf\Graphics\ColorSurfaceLoader.cs">
+      <Link>Graphics\ColorSurfaceLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus.Wpf\Graphics\WriteableBitmapBuffer.cs">
+      <Link>Graphics\WriteableBitmapBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus.Wpf\Graphics\WriteableBitmapWrapper.cs">
+      <Link>Graphics\WriteableBitmapWrapper.cs</Link>
+    </Compile>
     <Compile Include="..\Nexus\AxisAlignedBoundingBox.cs">
       <Link>AxisAlignedBoundingBox.cs</Link>
     </Compile>
@@ -133,6 +142,60 @@
     </Compile>
     <Compile Include="..\Nexus\Design\Vector3DConverter.cs">
       <Link>Design\Vector3DConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Cameras\Camera.cs">
+      <Link>Graphics\Cameras\Camera.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Cameras\OrthographicCamera.cs">
+      <Link>Graphics\Cameras\OrthographicCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Cameras\PerspectiveCamera.cs">
+      <Link>Graphics\Cameras\PerspectiveCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Cameras\ProjectionCamera.cs">
+      <Link>Graphics\Cameras\ProjectionCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\ColorSurface.cs">
+      <Link>Graphics\ColorSurface.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\IImageBuffer.cs">
+      <Link>Graphics\IImageBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Surface.cs">
+      <Link>Graphics\Surface.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\AffineTransform.cs">
+      <Link>Graphics\Transforms\AffineTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\AxisAngleRotation3D.cs">
+      <Link>Graphics\Transforms\AxisAngleRotation3D.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\MatrixTransform.cs">
+      <Link>Graphics\Transforms\MatrixTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\QuaternionRotation.cs">
+      <Link>Graphics\Transforms\QuaternionRotation.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\RotateTransform3D.cs">
+      <Link>Graphics\Transforms\RotateTransform3D.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\Rotation.cs">
+      <Link>Graphics\Transforms\Rotation.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\ScaleTransform3D.cs">
+      <Link>Graphics\Transforms\ScaleTransform3D.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\Transform3D.cs">
+      <Link>Graphics\Transforms\Transform3D.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\Transform3DCollection.cs">
+      <Link>Graphics\Transforms\Transform3DCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\Transform3DGroup.cs">
+      <Link>Graphics\Transforms\Transform3DGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\Graphics\Transforms\TranslateTransform.cs">
+      <Link>Graphics\Transforms\TranslateTransform.cs</Link>
     </Compile>
     <Compile Include="..\Nexus\HsbColor.cs">
       <Link>HsbColor.cs</Link>

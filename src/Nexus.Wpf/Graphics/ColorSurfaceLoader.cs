@@ -1,6 +1,10 @@
 using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
+#if SILVERLIGHT
+using System.Windows.Resources;
+#endif
 using Nexus.Util;
 
 namespace Nexus.Graphics
@@ -24,11 +28,13 @@ namespace Nexus.Graphics
 			return surface;
 		}
 
+#if !SILVERLIGHT
 		public static void PopulateFromStream(ColorSurface surface, Stream stream)
 		{
 			BitmapFrame bitmapImage = BitmapFrame.Create(stream);
 			PopulateSurface(surface, new WriteableBitmapWrapper(new WriteableBitmap(bitmapImage)));
 		}
+#endif
 
 		private static void PopulateSurface(ColorSurface surface, WriteableBitmapWrapper writeableBitmap)
 		{
