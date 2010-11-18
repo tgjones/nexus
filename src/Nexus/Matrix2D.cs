@@ -12,6 +12,22 @@ namespace Nexus
 		public float M32;
 		public float M33;
 
+		public float Determinant
+		{
+			get
+			{
+				float temp1 = M11 * (M22 * M33 - M32 * M23);
+				float temp2 = M12 * (M21 * M33 - M31 * M23);
+				float temp3 = M13 * (M21 * M32 - M31 * M22);
+				return temp1 - temp2 + temp3;
+			}
+		}
+
+		public bool HasInverse
+		{
+			get { return !MathUtility.IsZero(Determinant); }
+		}
+
 		public Matrix2D(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33)
 		{
 			this.M11 = m11;
@@ -66,5 +82,67 @@ namespace Nexus
 				-s, c, 0,
 				0, 0, 1);
 		}
+
+		public static Matrix2D Adjoint(Matrix2D matrix)
+		{
+			Matrix2D adjoint;
+			adjoint.M11 = matrix.M33 * matrix.M22 - matrix.M32 * matrix.M23;
+			adjoint.M12 = -(matrix.M33 * matrix.M12 - matrix.M32 * matrix.M13);
+			adjoint.M13 = matrix.M23 * matrix.M12 - matrix.M22 * matrix.M13;
+			adjoint.M21 = -(matrix.M33 * matrix.M21 - matrix.M31 * matrix.M23);
+			adjoint.M22 = matrix.M33 * matrix.M11 - matrix.M31 * matrix.M13;
+			adjoint.M23 = -(matrix.M23 * matrix.M11 - matrix.M21 * matrix.M13);
+			adjoint.M31 = matrix.M32 * matrix.M21 - matrix.M31 * matrix.M22;
+			adjoint.M32 = -(matrix.M32 * matrix.M11 - matrix.M31 * matrix.M12);
+			adjoint.M33 = matrix.M22 * matrix.M11 - matrix.M21 * matrix.M12;
+			return adjoint;
+		}
+
+		public static Matrix2D Invert(Matrix2D matrix)
+		{
+			return Adjoint(matrix) / matrix.Determinant;
+		}
+
+		public static Matrix2D Transpose(Matrix2D matrix)
+		{
+			Matrix2D result = new Matrix2D();
+			result.M11 = matrix.M11;
+			result.M12 = matrix.M21;
+			result.M13 = matrix.M31;
+			result.M21 = matrix.M12;
+			result.M22 = matrix.M22;
+			result.M23 = matrix.M32;
+			result.M31 = matrix.M13;
+			result.M32 = matrix.M23;
+			result.M33 = matrix.M33;
+			return result;
+		}
+
+		public Vector3D Transform(Vector3D vector)
+		{
+			Vector3D result;
+			result.X = vector.X * M11 + vector.Y * M21 + vector.Z * M31;
+			result.Y = vector.X * M12 + vector.Y * M22 + vector.Z * M32;
+			result.Z = vector.X * M13 + vector.Y * M23 + vector.Z * M33;
+			return result;
+		}
+
+		#region Operators
+
+		public static Matrix2D operator/(Matrix2D matrix, float value)
+		{
+			matrix.M11 /= value;
+			matrix.M12 /= value;
+			matrix.M13 /= value;
+			matrix.M21 /= value;
+			matrix.M22 /= value;
+			matrix.M23 /= value;
+			matrix.M31 /= value;
+			matrix.M32 /= value;
+			matrix.M33 /= value;
+			return matrix;
+		}
+
+		#endregion
 	}
 }

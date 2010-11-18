@@ -83,6 +83,9 @@
     <Compile Include="Graphics\Cameras\OrthographicCamera.cs" />
     <Compile Include="Graphics\Cameras\PerspectiveCamera.cs" />
     <Compile Include="Graphics\Cameras\ProjectionCamera.cs" />
+    <Compile Include="Graphics\ColorSurface.cs" />
+    <Compile Include="Graphics\IImageBuffer.cs" />
+    <Compile Include="Graphics\Surface.cs" />
     <Compile Include="Graphics\Transforms\AffineTransform.cs" />
     <Compile Include="Graphics\Transforms\AxisAngleRotation3D.cs" />
     <Compile Include="Graphics\Transforms\MatrixTransform.cs" />
@@ -94,6 +97,8 @@
     <Compile Include="Graphics\Transforms\Transform3DCollection.cs" />
     <Compile Include="Graphics\Transforms\Transform3DGroup.cs" />
     <Compile Include="Graphics\Transforms\TranslateTransform.cs" />
+    <Compile Include="Box2D.cs" />
+    <Compile Include="IntPoint2D.cs" />
     <Compile Include="Vector4D.cs" />
     <Compile Include="Design\ColorConverter.cs" />
     <Compile Include="ColorF.cs" />

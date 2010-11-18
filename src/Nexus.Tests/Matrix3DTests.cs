@@ -41,36 +41,30 @@ namespace Nexus.Tests
 
 		private static void AssertPointsAreEqual(Vector4 expectedPoint, Point4D actualPoint)
 		{
-			AssertAreRoughlyEqual(expectedPoint.X, actualPoint.X);
-			AssertAreRoughlyEqual(expectedPoint.Y, actualPoint.Y);
-			AssertAreRoughlyEqual(expectedPoint.Z, actualPoint.Z);
-			AssertAreRoughlyEqual(expectedPoint.W, actualPoint.W);
+			TestUtility.AssertAreRoughlyEqual(expectedPoint.X, actualPoint.X);
+			TestUtility.AssertAreRoughlyEqual(expectedPoint.Y, actualPoint.Y);
+			TestUtility.AssertAreRoughlyEqual(expectedPoint.Z, actualPoint.Z);
+			TestUtility.AssertAreRoughlyEqual(expectedPoint.W, actualPoint.W);
 		}
 
 		private static void AssertMatricesAreEqual(Matrix expectedMatrix, Matrix3D actualMatrix)
 		{
-			AssertAreRoughlyEqual(expectedMatrix.M11, actualMatrix.M11);
-			AssertAreRoughlyEqual(expectedMatrix.M12, actualMatrix.M12);
-			AssertAreRoughlyEqual(expectedMatrix.M13, actualMatrix.M13);
-			AssertAreRoughlyEqual(expectedMatrix.M14, actualMatrix.M14);
-			AssertAreRoughlyEqual(expectedMatrix.M21, actualMatrix.M21);
-			AssertAreRoughlyEqual(expectedMatrix.M22, actualMatrix.M22);
-			AssertAreRoughlyEqual(expectedMatrix.M23, actualMatrix.M23);
-			AssertAreRoughlyEqual(expectedMatrix.M24, actualMatrix.M24);
-			AssertAreRoughlyEqual(expectedMatrix.M31, actualMatrix.M31);
-			AssertAreRoughlyEqual(expectedMatrix.M32, actualMatrix.M32);
-			AssertAreRoughlyEqual(expectedMatrix.M33, actualMatrix.M33);
-			AssertAreRoughlyEqual(expectedMatrix.M34, actualMatrix.M34);
-			AssertAreRoughlyEqual(expectedMatrix.M41, actualMatrix.M41);
-			AssertAreRoughlyEqual(expectedMatrix.M42, actualMatrix.M42);
-			AssertAreRoughlyEqual(expectedMatrix.M43, actualMatrix.M43);
-			AssertAreRoughlyEqual(expectedMatrix.M44, actualMatrix.M44);
-		}
-
-		private static void AssertAreRoughlyEqual(float expectedValue, float actualValue)
-		{
-			if (System.Math.Abs(expectedValue - actualValue) > 0.01f)
-				Assert.Fail("Expected value: " + expectedValue + "; actual value: " + actualValue);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M11, actualMatrix.M11);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M12, actualMatrix.M12);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M13, actualMatrix.M13);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M14, actualMatrix.M14);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M21, actualMatrix.M21);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M22, actualMatrix.M22);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M23, actualMatrix.M23);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M24, actualMatrix.M24);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M31, actualMatrix.M31);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M32, actualMatrix.M32);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M33, actualMatrix.M33);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M34, actualMatrix.M34);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M41, actualMatrix.M41);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M42, actualMatrix.M42);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M43, actualMatrix.M43);
+			TestUtility.AssertAreRoughlyEqual(expectedMatrix.M44, actualMatrix.M44);
 		}
 
 		[Test]

@@ -92,6 +92,9 @@
     <Compile Include="..\Nexus\AxisAlignedBoundingBox.cs">
       <Link>AxisAlignedBoundingBox.cs</Link>
     </Compile>
+    <Compile Include="..\Nexus\Box2D.cs">
+      <Link>Box2D.cs</Link>
+    </Compile>
     <Compile Include="..\Nexus\Color.cs">
       <Link>Color.cs</Link>
     </Compile>
@@ -139,6 +142,9 @@
     </Compile>
     <Compile Include="..\Nexus\Int32Collection.cs">
       <Link>Int32Collection.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\IntPoint2D.cs">
+      <Link>IntPoint2D.cs</Link>
     </Compile>
     <Compile Include="..\Nexus\Line3D.cs">
       <Link>Line3D.cs</Link>

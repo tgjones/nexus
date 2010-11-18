@@ -54,6 +54,11 @@ namespace Nexus
 			return (int) System.Math.Floor(value);
 		}
 
+		public static int Ceiling(float value)
+		{
+			return (int)System.Math.Ceiling(value);
+		}
+
 		/// <summary>
 		/// Returns a mod b. This differs from the % operator with respect to negative numbers.
 		/// </summary>
