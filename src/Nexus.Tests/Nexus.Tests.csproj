@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphics\Transforms\MatrixTransformTests.cs" />
     <Compile Include="MathUtilityTests.cs" />
     <Compile Include="Matrix2DTests.cs" />
     <Compile Include="Matrix3DTests.cs" />

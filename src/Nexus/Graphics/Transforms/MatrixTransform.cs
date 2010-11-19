@@ -20,7 +20,7 @@ namespace Nexus.Graphics.Transforms
 
 		public override Matrix3D Value
 		{
-			get { return this.Value; }
+			get { return Matrix; }
 		}
 	}
 }
