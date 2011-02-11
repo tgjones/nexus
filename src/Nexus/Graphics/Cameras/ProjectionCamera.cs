@@ -10,7 +10,7 @@ namespace Nexus.Graphics.Cameras
 		protected ProjectionCamera()
 		{
 			NearPlaneDistance = 0.125f;
-			FarPlaneDistance = 1.0f / 0.0f;
+			FarPlaneDistance = 10000.0f;
 			Position = Point3D.Zero;
 			_lookDirection = Vector3D.Forward;
 			UpDirection = Vector3D.Up;

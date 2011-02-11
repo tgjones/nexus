@@ -6,6 +6,18 @@ namespace Nexus
 {
 	public struct AxisAlignedBoundingBox
 	{
+		public static AxisAlignedBoundingBox Empty
+		{
+			get
+			{
+				return new AxisAlignedBoundingBox
+				{
+					Min = new Point3D(float.NaN, float.NaN, float.NaN),
+					Max = new Point3D(float.NaN, float.NaN, float.NaN)
+				};
+			}
+		}
+
 		public Point3D Min;
 		public Point3D Max;
 
@@ -117,6 +129,21 @@ namespace Nexus
 			return result;
 		}
 
+		public Point3D[] GetCorners()
+		{
+			return new[]
+			{
+				new Point3D(this.Min.X, this.Max.Y, this.Max.Z),
+				new Point3D(this.Max.X, this.Max.Y, this.Max.Z),
+				new Point3D(this.Max.X, this.Min.Y, this.Max.Z),
+				new Point3D(this.Min.X, this.Min.Y, this.Max.Z),
+				new Point3D(this.Min.X, this.Max.Y, this.Min.Z),
+				new Point3D(this.Max.X, this.Max.Y, this.Min.Z),
+				new Point3D(this.Max.X, this.Min.Y, this.Min.Z),
+				new Point3D(this.Min.X, this.Min.Y, this.Min.Z)
+			};
+		}
+
 		#endregion
 
 		#region Static stuff
@@ -124,24 +151,46 @@ namespace Nexus
 		public static AxisAlignedBoundingBox Union(AxisAlignedBoundingBox b, Point3D p)
 		{
 			AxisAlignedBoundingBox ret = b;
-			ret.Min.X = System.Math.Min(b.Min.X, p.X);
-			ret.Min.Y = System.Math.Min(b.Min.Y, p.Y);
-			ret.Min.Z = System.Math.Min(b.Min.Z, p.Z);
-			ret.Max.X = System.Math.Max(b.Max.X, p.X);
-			ret.Max.Y = System.Math.Max(b.Max.Y, p.Y);
-			ret.Max.Z = System.Math.Max(b.Max.Z, p.Z);
+			ret.Min.X = CheckedMin(b.Min.X, p.X);
+			ret.Min.Y = CheckedMin(b.Min.Y, p.Y);
+			ret.Min.Z = CheckedMin(b.Min.Z, p.Z);
+			ret.Max.X = CheckedMax(b.Max.X, p.X);
+			ret.Max.Y = CheckedMax(b.Max.Y, p.Y);
+			ret.Max.Z = CheckedMax(b.Max.Z, p.Z);
 			return ret;
+		}
+
+		private static float CheckedMin(float v1, float v2)
+		{
+			if (float.IsNaN(v1))
+				return v2;
+
+			if (float.IsNaN(v2))
+				return v1;
+
+			return Math.Min(v1, v2);
+		}
+
+		private static float CheckedMax(float v1, float v2)
+		{
+			if (float.IsNaN(v1))
+				return v2;
+
+			if (float.IsNaN(v2))
+				return v1;
+
+			return Math.Max(v1, v2);
 		}
 
 		public static AxisAlignedBoundingBox Union(AxisAlignedBoundingBox b, AxisAlignedBoundingBox b2)
 		{
 			AxisAlignedBoundingBox ret;
-			ret.Min.X = System.Math.Min(b.Min.X, b2.Min.X);
-			ret.Min.Y = System.Math.Min(b.Min.Y, b2.Min.Y);
-			ret.Min.Z = System.Math.Min(b.Min.Z, b2.Min.Z);
-			ret.Max.X = System.Math.Max(b.Max.X, b2.Max.X);
-			ret.Max.Y = System.Math.Max(b.Max.Y, b2.Max.Y);
-			ret.Max.Z = System.Math.Max(b.Max.Z, b2.Max.Z);
+			ret.Min.X = CheckedMin(b.Min.X, b2.Min.X);
+			ret.Min.Y = CheckedMin(b.Min.Y, b2.Min.Y);
+			ret.Min.Z = CheckedMin(b.Min.Z, b2.Min.Z);
+			ret.Max.X = CheckedMax(b.Max.X, b2.Max.X);
+			ret.Max.Y = CheckedMax(b.Max.Y, b2.Max.Y);
+			ret.Max.Z = CheckedMax(b.Max.Z, b2.Max.Z);
 			return ret;
 		}
 
