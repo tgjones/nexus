@@ -34,8 +34,8 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\NUnit\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="SlimDX">
-      <HintPath>..\..\lib\SlimDX\x86\SlimDX.dll</HintPath>
+    <Reference Include="SharpDX">
+      <HintPath>..\..\lib\SharpDX\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using SlimDX;
 
 namespace Nexus.Tests
 {
