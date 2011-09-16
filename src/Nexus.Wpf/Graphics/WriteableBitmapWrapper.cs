@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Nexus.Util
+namespace Nexus.Graphics
 {
 	/// <summary>
 	/// With thanks to http://writeablebitmapex.codeplex.com/
@@ -15,9 +15,10 @@ namespace Nexus.Util
 		private const float PreMultiplyFactor = 1 / 255f;
 		private const int SizeOfARGB = 4;
 
-		private WriteableBitmap _inner;
+		private readonly WriteableBitmap _inner;
+		private readonly int _width;
 #if !SILVERLIGHT
-		private int[] _pixels;
+		private readonly int[] _pixels;
 #endif
 
 		#endregion
@@ -31,7 +32,7 @@ namespace Nexus.Util
 
 		public int Width
 		{
-			get { return _inner.PixelWidth; }
+			get { return _width; }
 		}
 
 		public int Height
@@ -44,6 +45,7 @@ namespace Nexus.Util
 		public WriteableBitmapWrapper(WriteableBitmap source)
 		{
 			_inner = source;
+			_width = source.PixelWidth;
 
 #if !SILVERLIGHT
 			int width = _inner.PixelWidth;
@@ -83,7 +85,7 @@ namespace Nexus.Util
 		/// </summary>
 		/// <param name="bmp">The WriteableBitmap.</param>
 		/// <param name="color">The color used for filling.</param>
-		public void Clear(System.Windows.Media.Color color)
+		public void Clear(Color color)
 		{
 			float ai = color.A * PreMultiplyFactor;
 			int col = (color.A << 24) | ((byte)(color.R * ai) << 16) | ((byte)(color.G * ai) << 8) | (byte)(color.B * ai);
@@ -108,7 +110,6 @@ namespace Nexus.Util
 		/// <summary>
 		/// Fills the whole WriteableBitmap with an empty color (0).
 		/// </summary>
-		/// <param name="bmp">The WriteableBitmap.</param>
 		public void Clear()
 		{
 			int[] pixels = GetPixels();
@@ -126,13 +127,13 @@ namespace Nexus.Util
 		/// <param name="x">The x coordinate of the pixel.</param>
 		/// <param name="y">The y coordinate of the pixel.</param>
 		/// <returns>The color of the pixel at x, y as a Color struct.</returns>
-		public System.Windows.Media.Color GetPixel(int x, int y)
+		public Color GetPixel(int x, int y)
 		{
-			int c = GetPixels()[y * _inner.PixelWidth + x];
+			int c = GetPixels()[y * _width + x];
 			byte a = (byte)(c >> 24);
 			//float ai = a / PreMultiplyFactor;
 			float ai = 1;
-			return System.Windows.Media.Color.FromArgb(a, (byte)((c >> 16) * ai), (byte)((c >> 8) * ai), (byte)(c * ai));
+			return Color.FromArgb(a, (byte)((c >> 16) * ai), (byte)((c >> 8) * ai), (byte)(c * ai));
 		}
 
 		#endregion
@@ -142,17 +143,13 @@ namespace Nexus.Util
 		/// <summary>
 		/// Sets the color of the pixel.
 		/// </summary>
-		/// <param name="bmp">The WriteableBitmap.</param>
 		/// <param name="x">The x coordinate (row).</param>
 		/// <param name="y">The y coordinate (column).</param>
 		/// <param name="color">The color.</param>
-		public void SetPixel(int x, int y, System.Windows.Media.Color color)
+		public void SetPixel(int x, int y, Color color)
 		{
-			if (x < 0 || y < 0 || x >= _inner.PixelWidth || y >= _inner.PixelHeight)
-				return;
-
 			float ai = color.A * PreMultiplyFactor;
-			GetPixels()[y * _inner.PixelWidth + x] = (color.A << 24) | ((byte)(color.R * ai) << 16) | ((byte)(color.G * ai) << 8) | (byte)(color.B * ai);
+			GetPixels()[y * _width + x] = (color.A << 24) | ((byte)(color.R * ai) << 16) | ((byte)(color.G * ai) << 8) | (byte)(color.B * ai);
 		}
 
 		#endregion

@@ -2,44 +2,25 @@ namespace Nexus
 {
 	public static class ColorsF
 	{
-		public static ColorF Black
-		{
-			get { return ColorF.FromRgbColor(Colors.Black); }
-		}
+		public static readonly ColorF Black;
+		public static readonly ColorF Blue;
+		public static readonly ColorF Empty;
+		public static readonly ColorF Gray;
+		public static readonly ColorF Green;
+		public static readonly ColorF Red;
+		public static readonly ColorF Transparent;
+		public static readonly ColorF White;
 
-		public static ColorF Blue
+		static ColorsF()
 		{
-			get { return ColorF.FromRgbColor(Colors.Blue); }
-		}
-
-		public static ColorF Empty
-		{
-			get { return ColorF.FromRgbColor(Colors.Empty); }
-		}
-
-		public static ColorF Gray
-		{
-			get { return ColorF.FromRgbColor(Colors.Gray); }
-		}
-
-		public static ColorF Green
-		{
-			get { return ColorF.FromRgbColor(Colors.Green); }
-		}
-
-		public static ColorF Red
-		{
-			get { return ColorF.FromRgbColor(Colors.Red); }
-		}
-
-		public static ColorF Transparent
-		{
-			get { return ColorF.FromRgbColor(Colors.Transparent); }
-		}
-
-		public static ColorF White
-		{
-			get { return ColorF.FromRgbColor(Colors.White); }
+			Black = ColorF.FromRgbColor(Colors.Black);
+			Blue = ColorF.FromRgbColor(Colors.Blue);
+			Empty = ColorF.FromRgbColor(Colors.Empty);
+			Gray = ColorF.FromRgbColor(Colors.Gray);
+			Green = ColorF.FromRgbColor(Colors.Green);
+			Red = ColorF.FromRgbColor(Colors.Red);
+			Transparent = ColorF.FromRgbColor(Colors.Transparent);
+			White = ColorF.FromRgbColor(Colors.White);
 		}
 	}
 }

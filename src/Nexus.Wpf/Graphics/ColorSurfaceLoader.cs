@@ -5,7 +5,6 @@ using System.Windows.Media.Imaging;
 #if SILVERLIGHT
 using System.Windows.Resources;
 #endif
-using Nexus.Util;
 
 namespace Nexus.Graphics
 {
@@ -41,8 +40,8 @@ namespace Nexus.Graphics
 			for (int y = 0; y < surface.Height; ++y)
 				for (int x = 0; x < surface.Width; ++x)
 				{
-					System.Windows.Media.Color c = writeableBitmap.GetPixel(x, y);
-					surface[x, y, 0] = (ColorF)new Color(c.A, c.R, c.G, c.B);
+					var c = writeableBitmap.GetPixel(x, y);
+					surface[x, y, 0] = (ColorF) c;
 				}
 		}
 	}

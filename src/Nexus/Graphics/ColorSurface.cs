@@ -18,7 +18,8 @@
 		public ColorF ResolvePixel(int x, int y)
 		{
 			ColorF color = ColorsF.Transparent;
-			for (int sampleIndex = 0; sampleIndex < MultiSampleCount; ++sampleIndex)
+			int multiSampleCount = MultiSampleCount;
+			for (int sampleIndex = 0; sampleIndex < multiSampleCount; ++sampleIndex)
 				color += Values[x, y, sampleIndex];
 			return color / MultiSampleCount;
 		}
