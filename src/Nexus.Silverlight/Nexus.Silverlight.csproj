@@ -166,8 +166,8 @@
     <Compile Include="..\Nexus\Graphics\Transforms\TranslateTransform.cs">
       <Link>Graphics\Transforms\TranslateTransform.cs</Link>
     </Compile>
-    <Compile Include="..\Nexus\Graphics\Viewport.cs">
-      <Link>Graphics\Viewport.cs</Link>
+    <Compile Include="..\Nexus\Graphics\Viewport3D.cs">
+      <Link>Graphics\Viewport3D.cs</Link>
     </Compile>
     <Compile Include="..\Nexus\HsbColor.cs">
       <Link>HsbColor.cs</Link>
