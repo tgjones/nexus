@@ -196,6 +196,18 @@
     <Compile Include="..\Nexus\Normal3D.cs">
       <Link>Normal3D.cs</Link>
     </Compile>
+    <Compile Include="..\Nexus\NumericalAnalysis\EulerOdeSolver.cs">
+      <Link>NumericalAnalysis\EulerOdeSolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\NumericalAnalysis\OdeSolver.cs">
+      <Link>NumericalAnalysis\OdeSolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\NumericalAnalysis\Rk2OdeSolver.cs">
+      <Link>NumericalAnalysis\Rk2OdeSolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Nexus\NumericalAnalysis\Rk4OdeSolver.cs">
+      <Link>NumericalAnalysis\Rk4OdeSolver.cs</Link>
+    </Compile>
     <Compile Include="..\Nexus\Plane.cs">
       <Link>Plane.cs</Link>
     </Compile>

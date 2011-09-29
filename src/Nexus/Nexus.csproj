@@ -70,6 +70,10 @@
     <Compile Include="Box2D.cs" />
     <Compile Include="Graphics\Viewport3D.cs" />
     <Compile Include="IntPoint2D.cs" />
+    <Compile Include="NumericalAnalysis\EulerOdeSolver.cs" />
+    <Compile Include="NumericalAnalysis\OdeSolver.cs" />
+    <Compile Include="NumericalAnalysis\Rk2OdeSolver.cs" />
+    <Compile Include="NumericalAnalysis\Rk4OdeSolver.cs" />
     <Compile Include="Vector4D.cs" />
     <Compile Include="Design\ColorConverter.cs" />
     <Compile Include="ColorF.cs" />
