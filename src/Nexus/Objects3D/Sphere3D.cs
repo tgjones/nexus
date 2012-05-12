@@ -1,6 +1,6 @@
-namespace Nexus
+namespace Nexus.Objects3D
 {
-	public struct Sphere
+	public struct Sphere3D
 	{
 		public Point3D Center;
 		public float Radius;

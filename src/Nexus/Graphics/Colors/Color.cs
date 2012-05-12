@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Nexus.Design;
 
-namespace Nexus
+namespace Nexus.Graphics.Colors
 {
 	[TypeConverter(typeof(ColorConverter))]
 	[StructLayout(LayoutKind.Sequential)]

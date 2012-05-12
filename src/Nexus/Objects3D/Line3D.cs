@@ -1,4 +1,4 @@
-namespace Nexus
+namespace Nexus.Objects3D
 {
 	public struct Line3D
 	{

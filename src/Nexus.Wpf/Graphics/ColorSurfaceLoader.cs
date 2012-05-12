@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using Nexus.Graphics.Colors;
+
 #if SILVERLIGHT
 using System.Windows.Resources;
 #endif

@@ -1,6 +1,6 @@
 using System;
 
-namespace Nexus
+namespace Nexus.Objects2D
 {
 	public struct Box2D
 	{

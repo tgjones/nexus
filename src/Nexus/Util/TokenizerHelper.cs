@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Nexus
+namespace Nexus.Util
 {
 	internal class TokenizerHelper
 	{

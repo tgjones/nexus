@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Nexus
+namespace Nexus.Graphics.Colors
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public struct ColorRgb

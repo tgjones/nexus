@@ -1,4 +1,6 @@
-﻿namespace Nexus.Graphics
+﻿using Nexus.Graphics.Colors;
+
+namespace Nexus.Graphics
 {
 	public class ColorSurface : Surface<ColorF>
 	{

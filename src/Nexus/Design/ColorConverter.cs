@@ -4,6 +4,8 @@ using System.Globalization;
 #if !SILVERLIGHT
 using System.ComponentModel.Design.Serialization;
 using System.Reflection;
+using Nexus.Graphics.Colors;
+
 #endif
 
 namespace Nexus.Design

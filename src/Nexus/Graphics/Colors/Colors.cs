@@ -1,4 +1,4 @@
-namespace Nexus
+namespace Nexus.Graphics.Colors
 {
 	public static class Colors
 	{

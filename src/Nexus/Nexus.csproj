@@ -43,12 +43,12 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AxisAlignedBoundingBox.cs" />
-    <Compile Include="BoundingFrustum.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="ColorRgb.cs" />
-    <Compile Include="ColorRgbF.cs" />
-    <Compile Include="ColorsRgbF.cs" />
+    <Compile Include="Objects3D\AxisAlignedBox3D.cs" />
+    <Compile Include="Objects3D\Frustum3D.cs" />
+    <Compile Include="Graphics\Colors\Color.cs" />
+    <Compile Include="Graphics\Colors\ColorRgb.cs" />
+    <Compile Include="Graphics\Colors\ColorRgbF.cs" />
+    <Compile Include="Graphics\Colors\ColorsRgbF.cs" />
     <Compile Include="Graphics\Cameras\Camera.cs" />
     <Compile Include="Graphics\Cameras\OrthographicCamera.cs" />
     <Compile Include="Graphics\Cameras\PerspectiveCamera.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="Graphics\Transforms\Transform3DCollection.cs" />
     <Compile Include="Graphics\Transforms\Transform3DGroup.cs" />
     <Compile Include="Graphics\Transforms\TranslateTransform.cs" />
-    <Compile Include="Box2D.cs" />
+    <Compile Include="Objects2D\Box2D.cs" />
     <Compile Include="Graphics\Viewport3D.cs" />
     <Compile Include="IntPoint2D.cs" />
     <Compile Include="NumericalAnalysis\EulerOdeSolver.cs" />
@@ -76,21 +76,21 @@
     <Compile Include="NumericalAnalysis\Rk4OdeSolver.cs" />
     <Compile Include="Vector4D.cs" />
     <Compile Include="Design\ColorConverter.cs" />
-    <Compile Include="ColorF.cs" />
-    <Compile Include="Colors.cs" />
-    <Compile Include="ColorsF.cs" />
+    <Compile Include="Graphics\Colors\ColorF.cs" />
+    <Compile Include="Graphics\Colors\Colors.cs" />
+    <Compile Include="Graphics\Colors\ColorsF.cs" />
     <Compile Include="Design\FieldPropertyDescriptor.cs" />
     <Compile Include="Design\MemberPropertyDescriptor.cs" />
-    <Compile Include="HsbColor.cs" />
-    <Compile Include="HslColor.cs" />
+    <Compile Include="Graphics\Colors\HsbColor.cs" />
+    <Compile Include="Graphics\Colors\HslColor.cs" />
     <Compile Include="Int32Collection.cs" />
     <Compile Include="Design\Int32CollectionConverter.cs" />
-    <Compile Include="Line3D.cs" />
+    <Compile Include="Objects3D\Line3D.cs" />
     <Compile Include="MathUtility.cs" />
     <Compile Include="Matrix2D.cs" />
     <Compile Include="Matrix3D.cs" />
     <Compile Include="Normal3D.cs" />
-    <Compile Include="Plane.cs" />
+    <Compile Include="Objects3D\Plane3D.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="Point2DCollection.cs" />
     <Compile Include="Point3D.cs" />
@@ -99,20 +99,20 @@
     <Compile Include="Design\Point3DConverter.cs" />
     <Compile Include="Point4D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quadratic.cs" />
     <Compile Include="Quaternion.cs" />
-    <Compile Include="Ray3D.cs" />
-    <Compile Include="RayDifferential3D.cs" />
-    <Compile Include="Spectrum.cs" />
-    <Compile Include="Sphere.cs" />
-    <Compile Include="TokenizerHelper.cs" />
-    <Compile Include="Triangle3D.cs" />
+    <Compile Include="Objects3D\Ray3D.cs" />
+    <Compile Include="Objects3D\RayDifferential3D.cs" />
+    <Compile Include="Graphics\Colors\Spectrum.cs" />
+    <Compile Include="Objects3D\Sphere3D.cs" />
+    <Compile Include="Util\TokenizerHelper.cs" />
+    <Compile Include="Objects3D\Triangle3D.cs" />
     <Compile Include="Vector2D.cs" />
     <Compile Include="Vector3D.cs" />
     <Compile Include="Vector3DCollection.cs" />
     <Compile Include="Design\Vector3DCollectionConverter.cs" />
     <Compile Include="Design\Vector3DConverter.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using Nexus.Design;
+using Nexus.Graphics.Colors;
+using Nexus.Util;
 
 namespace Nexus
 {

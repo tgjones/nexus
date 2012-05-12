@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text;
 using Nexus.Design;
+using Nexus.Util;
 
 namespace Nexus
 {

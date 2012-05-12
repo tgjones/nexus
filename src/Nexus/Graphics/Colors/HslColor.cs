@@ -1,4 +1,4 @@
-namespace Nexus
+namespace Nexus.Graphics.Colors
 {
 	/// <summary>
 	/// http://www.student.kuleuven.be/~m0216922/CG/color.html#RGB_to_HSL_

@@ -1,3 +1,5 @@
+using Nexus.Objects3D;
+
 namespace Nexus.Graphics.Transforms
 {
 	/// <summary>
@@ -91,7 +93,7 @@ namespace Nexus.Graphics.Transforms
 			Value.Transform(points);
 		}
 
-		public AxisAlignedBoundingBox Transform(AxisAlignedBoundingBox box)
+		public AxisAlignedBox3D Transform(AxisAlignedBox3D box)
 		{
 			return box.Transform(Value);
 		}

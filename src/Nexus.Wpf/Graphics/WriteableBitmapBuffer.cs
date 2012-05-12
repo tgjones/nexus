@@ -1,3 +1,5 @@
+using Nexus.Graphics.Colors;
+
 namespace Nexus.Graphics
 {
 	public class WriteableBitmapBuffer : IImageBuffer

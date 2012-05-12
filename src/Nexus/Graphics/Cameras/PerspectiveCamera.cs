@@ -1,3 +1,6 @@
+using Nexus.Objects2D;
+using Nexus.Objects3D;
+
 namespace Nexus.Graphics.Cameras
 {
 	/// <summary>
@@ -26,7 +29,7 @@ namespace Nexus.Graphics.Cameras
 				aspectRatio, NearPlaneDistance, FarPlaneDistance);
 		}
 
-		public static PerspectiveCamera CreateFromBounds(AxisAlignedBoundingBox bounds, Viewport3D viewport,
+		public static PerspectiveCamera CreateFromBounds(AxisAlignedBox3D bounds, Viewport3D viewport,
 			float fieldOfView, float yaw = 0.0f, float pitch = 0.0f, float zoom = 1.0f)
 		{
 			// Calculate initial guess at camera settings.

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Nexus
+namespace Nexus.Objects3D
 {
-	public struct AxisAlignedBoundingBox
+	public struct AxisAlignedBox3D
 	{
-		public static AxisAlignedBoundingBox Empty
+		public static AxisAlignedBox3D Empty
 		{
 			get
 			{
-				return new AxisAlignedBoundingBox
+				return new AxisAlignedBox3D
 				{
 					Min = new Point3D(float.NaN, float.NaN, float.NaN),
 					Max = new Point3D(float.NaN, float.NaN, float.NaN)
@@ -31,12 +31,12 @@ namespace Nexus
 			get { return Min + ((Max - Min) / 2); }
 		}
 
-		public AxisAlignedBoundingBox(Point3D p)
+		public AxisAlignedBox3D(Point3D p)
 		{
 			Min = Max = p;
 		}
 
-		public AxisAlignedBoundingBox(Point3D p1, Point3D p2)
+		public AxisAlignedBox3D(Point3D p1, Point3D p2)
 		{
 			Min = new Point3D(Math.Min(p1.X, p2.X),
 				Math.Min(p1.Y, p2.Y),
@@ -46,7 +46,7 @@ namespace Nexus
 				Math.Max(p1.Z, p2.Z));
 		}
 
-		public AxisAlignedBoundingBox(IEnumerable<Point3D> points)
+		public AxisAlignedBox3D(IEnumerable<Point3D> points)
 		{
 			if (points == null || !points.Any())
 				throw new ArgumentException();
@@ -98,9 +98,9 @@ namespace Nexus
 			return 2;
 		}
 
-		public AxisAlignedBoundingBox CreateTransformedBoundingVolume(Matrix3D transform)
+		public AxisAlignedBox3D CreateTransformedBoundingVolume(Matrix3D transform)
 		{
-			AxisAlignedBoundingBox result = new AxisAlignedBoundingBox();
+			AxisAlignedBox3D result = new AxisAlignedBox3D();
 
 			// For all three axes.
 			for (int i = 0; i < 3; ++i)
@@ -148,9 +148,9 @@ namespace Nexus
 
 		#region Static stuff
 
-		public static AxisAlignedBoundingBox Union(AxisAlignedBoundingBox b, Point3D p)
+		public static AxisAlignedBox3D Union(AxisAlignedBox3D b, Point3D p)
 		{
-			AxisAlignedBoundingBox ret = b;
+			AxisAlignedBox3D ret = b;
 			ret.Min.X = CheckedMin(b.Min.X, p.X);
 			ret.Min.Y = CheckedMin(b.Min.Y, p.Y);
 			ret.Min.Z = CheckedMin(b.Min.Z, p.Z);
@@ -182,9 +182,9 @@ namespace Nexus
 			return Math.Max(v1, v2);
 		}
 
-		public static AxisAlignedBoundingBox Union(AxisAlignedBoundingBox b, AxisAlignedBoundingBox b2)
+		public static AxisAlignedBox3D Union(AxisAlignedBox3D b, AxisAlignedBox3D b2)
 		{
-			AxisAlignedBoundingBox ret;
+			AxisAlignedBox3D ret;
 			ret.Min.X = CheckedMin(b.Min.X, b2.Min.X);
 			ret.Min.Y = CheckedMin(b.Min.Y, b2.Min.Y);
 			ret.Min.Z = CheckedMin(b.Min.Z, b2.Min.Z);
@@ -194,16 +194,16 @@ namespace Nexus
 			return ret;
 		}
 
-		public AxisAlignedBoundingBox Transform(Matrix3D matrix)
+		public AxisAlignedBox3D Transform(Matrix3D matrix)
 		{
-			AxisAlignedBoundingBox result = new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Min.X, Min.Y, Min.Z)));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Max.X, Min.Y, Min.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Min.X, Max.Y, Min.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Min.X, Min.Y, Max.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Min.X, Max.Y, Max.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Max.X, Max.Y, Min.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Max.X, Min.Y, Max.Z))));
-			result = Union(result, new AxisAlignedBoundingBox(matrix.Transform(new Point3D(Max.X, Max.Y, Max.Z))));
+			AxisAlignedBox3D result = new AxisAlignedBox3D(matrix.Transform(new Point3D(Min.X, Min.Y, Min.Z)));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Max.X, Min.Y, Min.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Min.X, Max.Y, Min.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Min.X, Min.Y, Max.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Min.X, Max.Y, Max.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Max.X, Max.Y, Min.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Max.X, Min.Y, Max.Z))));
+			result = Union(result, new AxisAlignedBox3D(matrix.Transform(new Point3D(Max.X, Max.Y, Max.Z))));
 			return result;
 		}
 

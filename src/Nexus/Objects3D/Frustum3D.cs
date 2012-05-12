@@ -1,38 +1,25 @@
 using System;
 using System.Globalization;
 
-namespace Nexus
+namespace Nexus.Objects3D
 {
-	public class BoundingFrustum : IEquatable<BoundingFrustum>
+	public class Frustum3D : IEquatable<Frustum3D>
 	{
 		// Fields
-		private const int BottomPlaneIndex = 5;
 		internal Point3D[] cornerArray;
 		public const int CornerCount = 8;
-		private const int FarPlaneIndex = 1;
-		private const int LeftPlaneIndex = 2;
 		private Matrix3D matrix;
-		private const int NearPlaneIndex = 0;
-		private const int NumPlanes = 6;
-		private Plane[] planes;
-		private const int RightPlaneIndex = 3;
-		private const int TopPlaneIndex = 4;
+		private Plane3D[] planes;
 
 		// Methods
-		private BoundingFrustum()
+		public Frustum3D(Matrix3D value)
 		{
-			this.planes = new Plane[6];
-			this.cornerArray = new Point3D[8];
-		}
-
-		public BoundingFrustum(Matrix3D value)
-		{
-			this.planes = new Plane[6];
+			this.planes = new Plane3D[6];
 			this.cornerArray = new Point3D[8];
 			this.SetMatrix(ref value);
 		}
 
-		public bool Equals(BoundingFrustum other)
+		public bool Equals(Frustum3D other)
 		{
 			if (other == null)
 			{
@@ -44,7 +31,7 @@ namespace Nexus
 		public override bool Equals(object obj)
 		{
 			bool flag = false;
-			BoundingFrustum frustum = obj as BoundingFrustum;
+			Frustum3D frustum = obj as Frustum3D;
 			if (frustum != null)
 			{
 				flag = this.matrix == frustum.matrix;
@@ -75,23 +62,23 @@ namespace Nexus
 			return this.matrix.GetHashCode();
 		}
 
-		public static bool operator ==(BoundingFrustum a, BoundingFrustum b)
+		public static bool operator ==(Frustum3D a, Frustum3D b)
 		{
 			return object.Equals(a, b);
 		}
 
-		public static bool operator !=(BoundingFrustum a, BoundingFrustum b)
+		public static bool operator !=(Frustum3D a, Frustum3D b)
 		{
 			return !object.Equals(a, b);
 		}
 
-		private static Point3D ComputeIntersection(ref Plane plane, ref Ray3D ray)
+		private static Point3D ComputeIntersection(ref Plane3D plane, ref Ray3D ray)
 		{
 			float num = (-plane.D - Vector3D.Dot(plane.Normal, (Vector3D) ray.Origin)) / Vector3D.Dot(plane.Normal, ray.Direction);
 			return (ray.Origin + ray.Direction * num);
 		}
 
-		private static Ray3D ComputeIntersectionLine(ref Plane p1, ref Plane p2)
+		private static Ray3D ComputeIntersectionLine(ref Plane3D p1, ref Plane3D p2)
 		{
 			Ray3D ray = new Ray3D
 			{
@@ -156,7 +143,7 @@ namespace Nexus
 		}
 
 		// Properties
-		public Plane Bottom
+		public Plane3D Bottom
 		{
 			get
 			{
@@ -164,7 +151,7 @@ namespace Nexus
 			}
 		}
 
-		public Plane Far
+		public Plane3D Far
 		{
 			get
 			{
@@ -172,7 +159,7 @@ namespace Nexus
 			}
 		}
 
-		public Plane Left
+		public Plane3D Left
 		{
 			get
 			{
@@ -192,7 +179,7 @@ namespace Nexus
 			}
 		}
 
-		public Plane Near
+		public Plane3D Near
 		{
 			get
 			{
@@ -200,7 +187,7 @@ namespace Nexus
 			}
 		}
 
-		public Plane Right
+		public Plane3D Right
 		{
 			get
 			{
@@ -208,7 +195,7 @@ namespace Nexus
 			}
 		}
 
-		public Plane Top
+		public Plane3D Top
 		{
 			get
 			{
