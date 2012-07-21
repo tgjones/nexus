@@ -12,7 +12,7 @@
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
 		<tags>.net40 3D math maths mathematics vector matrix camera</tags>
 		<dependencies>
-			<dependency id="Nexus" version="$version" />
+			<dependency id="Nexus" version="$version$" />
 		</dependencies>
 	</metadata>
 	<files>
