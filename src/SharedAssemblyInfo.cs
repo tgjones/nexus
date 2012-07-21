@@ -14,8 +14,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Retail")]
 [assembly: AssemblyCompany("Tim Jones")]
 [assembly: AssemblyProduct("Nexus")]
-[assembly: AssemblyCopyright("Copyright ©2011 Tim Jones")]
-[assembly: AssemblyTrademark("roastedamoeba.com")]
+[assembly: AssemblyCopyright("Copyright ©2012 Tim Jones")]
+[assembly: AssemblyTrademark("timjones.tw")]
 [assembly: ComVisible(false)]
 
 [assembly: AssemblyFileVersion("1.0.0.0")]
