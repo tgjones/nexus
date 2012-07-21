@@ -15,4 +15,7 @@
 			<dependency id="Nexus" version="$version" />
 		</dependencies>
 	</metadata>
+	<files>
+		<file src="..\..\LICENCE.txt" target="." />
+	</files>
 </package>
