@@ -18,9 +18,7 @@ namespace Nexus.Graphics
 
 		private readonly WriteableBitmap _inner;
 		private readonly int _width;
-#if !SILVERLIGHT
 		private readonly int[] _pixels;
-#endif
 
 		#endregion
 
@@ -48,35 +46,22 @@ namespace Nexus.Graphics
 			_inner = source;
 			_width = source.PixelWidth;
 
-#if !SILVERLIGHT
 			int width = _inner.PixelWidth;
 			int height = _inner.PixelHeight;
 			_pixels = new int[width * height];
 			_inner.CopyPixels(_pixels, width * 4, 0);
-#endif
 		}
 
 		private int[] GetPixels()
 		{
-#if SILVERLIGHT
-			return _inner.Pixels;
-#else
 			return _pixels;
-#endif
 		}
 
 		public WriteableBitmapWrapper(int width, int height)
 		{
-#if !SILVERLIGHT
 			_inner = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
-#else
-			_inner = new WriteableBitmap(width, height);
-#endif
-
-#if !SILVERLIGHT
 			_pixels = new int[width * height];
 			_inner.CopyPixels(_pixels, width * 4, 0);
-#endif
 		}
 
 		#region Clear
@@ -159,13 +144,9 @@ namespace Nexus.Graphics
 
 		public void Invalidate()
 		{
-#if !SILVERLIGHT
 			_inner.WritePixels(
 				new Int32Rect(0, 0, _inner.PixelWidth, _inner.PixelHeight),
 				_pixels, _inner.BackBufferStride, 0, 0);
-#else
-			_inner.Invalidate();
-#endif
 		}
 
 		#endregion

@@ -1,10 +1,8 @@
 using System;
 using System.ComponentModel;
 using System.Globalization;
-#if !SILVERLIGHT
 using System.ComponentModel.Design.Serialization;
 using System.Reflection;
-#endif
 
 namespace Nexus.Design
 {
@@ -18,19 +16,13 @@ namespace Nexus.Design
 		public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
 		{
 			if (value == null)
-#if SILVERLIGHT
-				return base.ConvertFrom(context, culture, value);
-#else
-				throw base.GetConvertFromException(value);
-#endif
+				throw GetConvertFromException(value);
 
 			string source = value as string;
 			if (source != null)
 				return Vector3D.Parse(source);
 			return base.ConvertFrom(context, culture, value);
 		}
-
-#if !SILVERLIGHT
 
 		public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
 		{
@@ -57,7 +49,5 @@ namespace Nexus.Design
 			}
 			return base.ConvertTo(context, culture, value, destinationType);
 		}
-
-#endif
 	}
 }
