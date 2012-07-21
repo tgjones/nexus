@@ -10,3 +10,13 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("d85bb378-a9da-42db-b2b9-a72360750407")]
+
+[assembly: AssemblyConfiguration("Retail")]
+[assembly: AssemblyCompany("Tim Jones")]
+[assembly: AssemblyProduct("Nexus.Wpf")]
+[assembly: AssemblyCopyright("Copyright ©2012 Tim Jones")]
+[assembly: AssemblyTrademark("timjones.tw")]
+[assembly: ComVisible(false)]
+
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
