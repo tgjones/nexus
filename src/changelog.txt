@@ -1,0 +1,3 @@
+Trunk
+- Removed Silverlight version. Silverlight 5 includes XNA's Math classes, rendering
+  Nexus support for Silverlight largely redundant.
