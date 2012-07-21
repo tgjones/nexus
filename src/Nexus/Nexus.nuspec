@@ -13,6 +13,6 @@
 		<tags>.net40 3D math maths mathematics vector matrix camera</tags>
 	</metadata>
 	<files>
-		<file src="LICENCE.txt" target="." />
+		<file src="..\..\..\..\LICENCE.txt" target="." />
 	</files>
 </package>
