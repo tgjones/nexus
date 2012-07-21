@@ -189,6 +189,11 @@ namespace Nexus.Graphics.Colors
 				(byte)(MathUtility.Saturate(value.B) * 255.0f));
 		}
 
+		public static explicit operator Vector3D(ColorF value)
+		{
+			return new Vector3D(value.R, value.G, value.B);
+		}
+
 		#endregion
 
 		public ColorRgbF Rgb

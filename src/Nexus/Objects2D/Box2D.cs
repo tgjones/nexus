@@ -24,6 +24,16 @@ namespace Nexus.Objects2D
 			set { _max = value; }
 		}
 
+		public int Width
+		{
+			get { return Max.X - Min.X; }
+		}
+
+		public int Height
+		{
+			get { return Max.Y - Min.Y; }
+		}
+
 		public Box2D(IntPoint2D min, IntPoint2D max)
 		{
 			_min = min;

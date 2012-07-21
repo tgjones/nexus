@@ -176,6 +176,11 @@ namespace Nexus
 			}
 		}
 
+		public Vector3D Forward
+		{
+			get { return new Vector3D(-M31, -M32, -M33); }
+		}
+
 		#endregion
 
 		#region Indexer
@@ -631,6 +636,11 @@ namespace Nexus
 			return CreateScale(scale, scale, scale);
 		}
 
+		public static Matrix3D CreateScale(Vector3D scales)
+		{
+			return CreateScale(scales.X, scales.Y, scales.Z);
+		}
+
 		/// <summary>
 		/// Creates a translation matrix.
 		/// </summary>
@@ -945,6 +955,36 @@ namespace Nexus
 			return true;
 		}
 
+		// Thanks to MonoGame (https://github.com/mono/MonoGame/blob/develop/MonoGame.Framework/Matrix.cs)
+		public bool Decompose(out Vector3D scale, out Quaternion rotation, out Vector3D translation)
+		{
+			translation.X = this.M41;
+			translation.Y = this.M42;
+			translation.Z = this.M43;
+
+			float xs = (Math.Sign(M11 * M12 * M13 * M14) < 0) ? -1f : 1f;
+			float ys = (Math.Sign(M21 * M22 * M23 * M24) < 0) ? -1f : 1f;
+			float zs = (Math.Sign(M31 * M32 * M33 * M34) < 0) ? -1f : 1f;
+
+			scale.X = xs * (float)Math.Sqrt(this.M11 * this.M11 + this.M12 * this.M12 + this.M13 * this.M13);
+			scale.Y = ys * (float)Math.Sqrt(this.M21 * this.M21 + this.M22 * this.M22 + this.M23 * this.M23);
+			scale.Z = zs * (float)Math.Sqrt(this.M31 * this.M31 + this.M32 * this.M32 + this.M33 * this.M33);
+
+			if (scale.X == 0.0 || scale.Y == 0.0 || scale.Z == 0.0)
+			{
+				rotation = Quaternion.Identity;
+				return false;
+			}
+
+			Matrix3D m1 = new Matrix3D(this.M11 / scale.X, M12 / scale.X, M13 / scale.X, 0,
+								   this.M21 / scale.Y, M22 / scale.Y, M23 / scale.Y, 0,
+								   this.M31 / scale.Z, M32 / scale.Z, M33 / scale.Z, 0,
+								   0, 0, 0, 1);
+
+			rotation = Quaternion.CreateFromRotationMatrix(m1);
+			return true;
+		}
+
 		#endregion
 
 		#region Operators
@@ -974,6 +1014,48 @@ namespace Nexus
 				(((matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22)) + (matrix1.M43 * matrix2.M32)) + (matrix1.M44 * matrix2.M42),
 				(((matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23)) + (matrix1.M43 * matrix2.M33)) + (matrix1.M44 * matrix2.M43),
 				(((matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24)) + (matrix1.M43 * matrix2.M34)) + (matrix1.M44 * matrix2.M44));
+		}
+
+		public static Matrix3D operator *(Matrix3D matrix, float scaleFactor)
+		{
+			return new Matrix3D(
+				matrix.M11 * scaleFactor,
+				matrix.M12 * scaleFactor,
+				matrix.M13 * scaleFactor,
+				matrix.M14 * scaleFactor,
+				matrix.M21 * scaleFactor,
+				matrix.M22 * scaleFactor,
+				matrix.M23 * scaleFactor,
+				matrix.M24 * scaleFactor,
+				matrix.M31 * scaleFactor,
+				matrix.M32 * scaleFactor,
+				matrix.M33 * scaleFactor,
+				matrix.M34 * scaleFactor,
+				matrix.M41 * scaleFactor,
+				matrix.M42 * scaleFactor,
+				matrix.M43 * scaleFactor,
+				matrix.M44 * scaleFactor);
+		}
+
+		public static Matrix3D operator +(Matrix3D matrix1, Matrix3D matrix2)
+		{
+			return new Matrix3D(
+				matrix1.M11 + matrix2.M11,
+				matrix1.M12 + matrix2.M12,
+				matrix1.M13 + matrix2.M13,
+				matrix1.M14 + matrix2.M14,
+				matrix1.M21 + matrix2.M21,
+				matrix1.M22 + matrix2.M22,
+				matrix1.M23 + matrix2.M23,
+				matrix1.M24 + matrix2.M24,
+				matrix1.M31 + matrix2.M31,
+				matrix1.M32 + matrix2.M32,
+				matrix1.M33 + matrix2.M33,
+				matrix1.M34 + matrix2.M34,
+				matrix1.M41 + matrix2.M41,
+				matrix1.M42 + matrix2.M42,
+				matrix1.M43 + matrix2.M43,
+				matrix1.M44 + matrix2.M44);
 		}
 
 		public static bool operator ==(Matrix3D matrix1, Matrix3D matrix2)

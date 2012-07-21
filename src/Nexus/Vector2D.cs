@@ -9,6 +9,11 @@ namespace Nexus
 			get { return new Vector2D(0, 0); }
 		}
 
+		public static short SizeInBytes
+		{
+			get { return sizeof(float) * 2; }
+		}
+
 		public Vector2D(float x, float y)
 		{
 			X = x;

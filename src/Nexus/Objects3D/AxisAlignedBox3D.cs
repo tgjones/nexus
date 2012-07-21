@@ -208,5 +208,10 @@ namespace Nexus.Objects3D
 		}
 
 		#endregion
+
+		public float? Intersects(Ray3D ray)
+		{
+			return ray.Intersects(this);
+		}
 	}
 }

@@ -92,6 +92,23 @@ namespace Nexus.Graphics.Colors
 			return new ColorF(color.A / 255.0f, color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 		}
 
+		public static Color operator *(Color value, float multiplier)
+		{
+			return new Color(
+				(byte) (value.A * multiplier),
+				(byte) (value.R * multiplier),
+				(byte) (value.G * multiplier),
+				(byte) (value.B * multiplier));
+		}
+
 		#endregion
+
+		public static Color FromNonPremultiplied(byte r, byte g, byte b, byte a)
+		{
+			return new Color(a,
+				(byte) (r * a / (float) byte.MaxValue),
+				(byte) (g * a / (float) byte.MaxValue),
+				(byte) (b * a / (float) byte.MaxValue));
+		}
 	}
 }

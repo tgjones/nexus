@@ -43,7 +43,9 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Byte4.cs" />
     <Compile Include="Objects3D\AxisAlignedBox3D.cs" />
+    <Compile Include="Objects3D\ContainmentType.cs" />
     <Compile Include="Objects3D\Frustum3D.cs" />
     <Compile Include="Graphics\Colors\Color.cs" />
     <Compile Include="Graphics\Colors\ColorRgb.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="NumericalAnalysis\OdeSolver.cs" />
     <Compile Include="NumericalAnalysis\Rk2OdeSolver.cs" />
     <Compile Include="NumericalAnalysis\Rk4OdeSolver.cs" />
+    <Compile Include="Objects3D\PlaneHelper.cs" />
     <Compile Include="Vector4D.cs" />
     <Compile Include="Design\ColorConverter.cs" />
     <Compile Include="Graphics\Colors\ColorF.cs" />

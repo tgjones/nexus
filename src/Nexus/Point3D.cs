@@ -22,6 +22,12 @@ namespace Nexus
 			Z = z;
 		}
 
+		public Point3D(Point2D xy, float z)
+			: this(xy.X, xy.Y, z)
+		{
+			
+		}
+
 		#region Properties
 
 		public static Point3D Zero
@@ -223,6 +229,15 @@ namespace Nexus
 		public static explicit operator Vector3D(Point3D point)
 		{
 			return new Vector3D(point.X, point.Y, point.Z);
+		}
+
+		#endregion
+
+		#region Static methods
+
+		public static void Subtract(ref Point3D value1, ref Point3D value2, out Vector3D result)
+		{
+			result = new Vector3D(value1.X - value2.X, value1.Y - value2.Y, value1.Z - value2.Z);
 		}
 
 		#endregion

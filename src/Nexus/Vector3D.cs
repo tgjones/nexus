@@ -23,6 +23,13 @@ namespace Nexus
 			this.Z = z;
 		}
 
+		public Vector3D(float value)
+		{
+			this.X = value;
+			this.Y = value;
+			this.Z = value;
+		}
+
 		#endregion
 
 		#region Indexer
@@ -129,6 +136,21 @@ namespace Nexus
 			get { return new Vector3D(1, 1, 1); }
 		}
 
+		public static Vector3D UnitX
+		{
+			get { return new Vector3D(1, 0, 0); }
+		}
+
+		public static Vector3D UnitY
+		{
+			get { return new Vector3D(0, 1, 0); }
+		}
+
+		public static Vector3D UnitZ
+		{
+			get { return new Vector3D(0, 0, 1); }
+		}
+
 		#endregion
 
 		#region Instance methods
@@ -193,6 +215,13 @@ namespace Nexus
 				(v1.X * v2.Y) - (v1.Y * v2.X));
 		}
 
+		public static void Cross(ref Vector3D v1, ref Vector3D v2, out Vector3D result)
+		{
+			result = new Vector3D((v1.Y * v2.Z) - (v1.Z * v2.Y),
+				(v1.Z * v2.X) - (v1.X * v2.Z),
+				(v1.X * v2.Y) - (v1.Y * v2.X));
+		}
+
 		public static Vector3D Cross(Vector3D v1, Normal3D v2)
 		{
 			return new Vector3D((v1.Y * v2.Z) - (v1.Z * v2.Y),
@@ -210,6 +239,11 @@ namespace Nexus
 		public static float Dot(Vector3D v1, Vector3D v2)
 		{
 			return (v1.X * v2.X) + (v1.Y * v2.Y) + (v1.Z * v2.Z);
+		}
+
+		public static void Dot(ref Vector3D v1, ref Vector3D v2, out float result)
+		{
+			result = (v1.X * v2.X) + (v1.Y * v2.Y) + (v1.Z * v2.Z);
 		}
 
 		public static float Dot(Vector3D v1, Normal3D n2)

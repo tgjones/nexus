@@ -57,6 +57,76 @@ namespace Nexus.Objects3D
 			this.cornerArray.CopyTo(corners, 0);
 		}
 
+		public ContainmentType Contains(AxisAlignedBox3D box)
+		{
+			// FIXME: Is this a bug?
+			// If the bounding box is of W * D * H = 0, then return disjoint
+			if (box.Min == box.Max)
+			{
+				return ContainmentType.Disjoint;
+			}
+
+			int i;
+			ContainmentType contained;
+			Point3D[] corners = box.GetCorners();
+
+			// First we assume completely disjoint. So if we find a point that is contained, we break out of this loop
+			for (i = 0; i < corners.Length; i++)
+			{
+				if (Contains(corners[i]) != ContainmentType.Disjoint)
+					break;
+			}
+
+			if (i == corners.Length) // This means we checked all the corners and they were all disjoint
+			{
+				return ContainmentType.Disjoint;
+			}
+
+			if (i != 0)             // if i is not equal to zero, we can fastpath and say that this box intersects
+			{                       // because we know at least one point is outside and one is inside.
+				return ContainmentType.Intersects;
+			}
+
+			// If we get here, it means the first (and only) point we checked was actually contained in the frustum.
+			// So we assume that all other points will also be contained. If one of the points is disjoint, we can
+			// exit immediately saying that the result is Intersects
+			i++;
+			for (; i < corners.Length; i++)
+			{
+				if (Contains(corners[i]) != ContainmentType.Contains)
+				{
+					return ContainmentType.Intersects;
+				}
+			}
+
+			// If we get here, then we know all the points were actually contained, therefore result is Contains
+			return ContainmentType.Contains;
+		}
+
+		public ContainmentType Contains(Point3D point)
+		{
+			// If a point is on the POSITIVE side of the plane, then the point is not contained within the frustum
+			foreach (var plane in planes)
+			{
+				// Check the top
+				Plane3D tempPlane = plane;
+				float val = PlaneHelper.ClassifyPoint(ref point, ref tempPlane);
+				if (val > 0)
+				{
+					return ContainmentType.Disjoint;
+				}
+			}
+
+			// If we get here, it means that the point was on the correct side of each plane to be
+			// contained. Therefore this point is contained
+			return ContainmentType.Contains; 
+		}
+
+		public bool Intersects(AxisAlignedBox3D box)
+		{
+			return Contains(box) != ContainmentType.Disjoint;
+		}
+
 		public override int GetHashCode()
 		{
 			return this.matrix.GetHashCode();

@@ -1,4 +1,5 @@
 using System.Globalization;
+using Nexus.Objects2D;
 
 namespace Nexus.Graphics
 {
@@ -100,6 +101,12 @@ namespace Nexus.Graphics
 					return Width / (float)Height;
 				return 0f;
 			}
+		}
+
+		public static explicit operator Box2D(Viewport3D value)
+		{
+			return new Box2D(new IntPoint2D(value.X, value.Y),
+				new IntPoint2D(value.X + value.Width, value.Y + value.Height));
 		}
 	}
 }
