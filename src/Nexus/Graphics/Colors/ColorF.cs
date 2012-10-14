@@ -201,6 +201,30 @@ namespace Nexus.Graphics.Colors
 			get { return new ColorRgbF(R, G, B); }
 		}
 
+		public float Red
+		{
+			get { return R; }
+			set { R = value; }
+		}
+
+		public float Green
+		{
+			get { return G; }
+			set { G = value; }
+		}
+
+		public float Blue
+		{
+			get { return B; }
+			set { B = value; }
+		}
+
+		public float Alpha
+		{
+			get { return A; }
+			set { A = value; }
+		}
+
 		public static ColorF Invert(ColorF value)
 		{
 			return new ColorF(1 - value.A, 1 - value.R, 1 - value.G, 1 - value.B);
